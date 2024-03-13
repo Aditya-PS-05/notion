@@ -53,7 +53,8 @@ export const Item = ({
     ) => {
         event.stopPropagation();
         if (!id) return;
-        const promise = archive({ id });
+        const promise = archive({ id })
+            .then((documentId) => router.push(`/documentId/${documentId}`))
         toast.promise(promise, {
             loading: "Moving to Trash...",
             success: "Note moved to trash!",
